@@ -46,7 +46,7 @@ jobs:
               server_address: smtp.gmail.com
               server_port: 465
               username: ${{ secrets.EMAIL }}
-              password: ${{ secrets.DOCKERHUB_PASSWORD }}
+              password: ${{ secrets.PASSWORD }}  # Corrected variable reference
               subject: "GitHub Action Notification"
               body: "Hello! This is a test email sent from GitHub Actions. I built the artifact and downloaded it."
               to: "theoafactor@gmail.com"
