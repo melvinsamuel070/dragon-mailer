@@ -1,4 +1,4 @@
-name: Deployment of Application Rev
+name: Dragone Deployment
 on:
     push:
         branches: 
@@ -13,7 +13,7 @@ jobs:
         
         - name: "Build the Docker image"
           run: |
-            docker pull melvinsamuel070/frontend1:1
+            docker build -t  melvinsamuel070/dragone:1 .
         
         - name: "LOgin to Docker"
           run: |
@@ -21,22 +21,38 @@ jobs:
 
         - name: "Push the Docker image to the Hub"
           run: |
-            docker push melvinsamuel070/frontend1:1 
+            docker push melvinsamuel070/dragone:1 
        
         - name: "Go to the repo for Helm"
           run: |
 
-            git config --global user.email "melvinsamuel070@gmail.com"
-            git config --global user.name "melvinsamuel070"
-            git clone https://github.com/melvinsamuel070/rev_app_helm.git rev_app_helm
-            cd rev_app_helm 
-            cd rev-app-chart/templates
-            sed -i 's/frontend1:1/frontend1:2/' deployment.yaml
-            # sed -i 's/rev_app:1/rev_app:2/' service.yaml
-            cat deployment.yaml
-            # cat service.yaml
-            git remote add rev_app_helm https://${{ secrets.GH_TOKEN }}@github.com/melvinsamuel070/rev_app_helm.git
-            git add .
-            git commit -m "Updated helm"
-            git push rev_app_helm master
+            # git config --global user.email "melvinsamuel070@gmail.com"
+            # git config --global user.name "melvinsamuel070"
+            # git clone https://github.com/melvinsamuel070/rev_app_helm.git rev_app_helm
+            # cd rev_app_helm 
+            # cd rev-app-chart/templates
+            # sed -i 's/frontend1:1/frontend1:2/' deployment.yaml
+            # # sed -i 's/rev_app:1/rev_app:2/' service.yaml
+            # cat deployment.yaml
+            # # cat service.yaml
+            # git remote add rev_app_helm https://${{ secrets.GH_TOKEN }}@github.com/melvinsamuel070/rev_app_helm.git
+            # git add .
+            # git commit -m "Updated helm"
+            # git push rev_app_helm master
+
+            - name: Send email
+            uses: dawidd6/action-send-mail@v4
+            with:
+              server_address: smtp.gmail.com
+              server_port: 465
+              username: ${{ secrets.EMAIL }}
+              password: ${{ secrets.DOCKERHUB_PASSWORD }}
+              subject: "GitHub Action Notification"
+              body: "Hello! This is a test email sent from GitHub Actions. I built the artifact and downloaded it."
+              to: "theoafactor@gmail.com"
+              from: ${{ secrets.EMAIL }}
+              secure: true  # Set to false for non-TLS/SSL connections
+              tls: true
+          
+
             
