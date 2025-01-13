@@ -23,8 +23,8 @@ jobs:
           run: |
             docker push melvinsamuel070/dragone:1 
        
-        - name: "Go to the repo for Helm"
-          run: |
+        # - name: "Go to the repo for Helm"
+        #   run: |
 
             # git config --global user.email "melvinsamuel070@gmail.com"
             # git config --global user.name "melvinsamuel070"
@@ -40,9 +40,9 @@ jobs:
             # git commit -m "Updated helm"
             # git push rev_app_helm master
 
-            - name: Send email
-            uses: dawidd6/action-send-mail@v4
-            with:
+        - name: Send email
+          uses: dawidd6/action-send-mail@v4
+          with:
               server_address: smtp.gmail.com
               server_port: 465
               username: ${{ secrets.EMAIL }}
