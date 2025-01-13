@@ -39,6 +39,27 @@ jobs:
             # git add .
             # git commit -m "Updated helm"
             # git push rev_app_helm master
+        - name: npm install, build, and test
+          run: |
+              npm install
+              npm run build --if-present
+              npm test
+          
+        - name: Archive production artifacts
+          uses: actions/upload-artifact@v4
+          with:
+           name: dist-without-markdown
+           path: |
+             dist
+             !dist/**/*.md
+          
+        - name: Archive code coverage results
+          uses: actions/upload-artifact@v4
+          with:
+           name: code-coverage-report
+           path: output/test/code-coverage.html
+          
+
 
         - name: Send email
           uses: dawidd6/action-send-mail@v4
