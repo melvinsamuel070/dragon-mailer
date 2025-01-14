@@ -11,6 +11,19 @@ jobs:
         - name: "checkout from workflows"
           uses: actions/checkout@v4
         
+        - name: Set up Python
+          uses: actions/setup-python@v4
+          with:
+           python-version: "3.x"
+
+        - name: Install pre-commit
+          run: |
+            python -m pip install --upgrade pip
+            pip install pre-commit
+  
+        - name: Run pre-commit hooks
+          run: pre-commit run --all-files
+  
         - name: "Build the Docker image"
           run: |
             docker build -t  melvinsamuel070/dragone:1 .
@@ -28,10 +41,10 @@ jobs:
 
             # git config --global user.email "melvinsamuel070@gmail.com"
             # git config --global user.name "melvinsamuel070"
-            # git clone https://github.com/melvinsamuel070/rev_app_helm.git rev_app_helm
+            # git clone https://github.com/melvinsamuel070/Dragone.git rev_app_helm
             # cd rev_app_helm 
-            # cd rev-app-chart/templates
-            # sed -i 's/frontend1:1/frontend1:2/' deployment.yaml
+            # cd dragone/dragon-mailer/templates
+            # sed -i 's/dragone:1/dragone:2/' deployment.yaml
             # # sed -i 's/rev_app:1/rev_app:2/' service.yaml
             # cat deployment.yaml
             # # cat service.yaml
@@ -74,6 +87,9 @@ jobs:
               from: ${{ secrets.EMAIL }}
               secure: true  # Set to false for non-TLS/SSL connections
               tls: true
-          
+        
+        - name: succesfull massage
+          run: |
+             echo "Deployment was succesfull" 
 
             
