@@ -43,7 +43,7 @@ jobs:
             git config --global user.name "melvinsamuel070"
             git clone https://github.com/melvinsamuel070/Dragone.git Dragone
             cd Dragone 
-            cd dragone/dragon-mailer/templates
+            cd Dragone/templates
             sed -i 's/dragone:1/dragone:2/' deployment.yaml
             # sed -i 's/rev_app:1/rev_app:2/' service.yaml
             cat deployment.yaml
