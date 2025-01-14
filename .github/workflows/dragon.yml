@@ -48,10 +48,11 @@ jobs:
             # sed -i 's/rev_app:1/rev_app:2/' service.yaml
             cat deployement.yaml
             # cat service.yaml
-            git remote add origin https://${{ secrets.GH_TOKEN }}@github.com/melvinsamuel070/Dragone.git
+            git remote add Dragone https://${{ secrets.GH_TOKEN }}@github.com/melvinsamuel070/Dragone.git
             git add .
             git commit -m "Updated helm"
-            git push origin master
+            git push Dragone master
+
         - name: npm install, build, and test
           run: |
               npm install
