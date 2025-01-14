@@ -1,95 +1,91 @@
 name: Dragone Deployment
 on:
-    push:
-        branches: 
-        - master
+  push:
+    branches:
+      - master
 
-jobs: 
-    DeploymentApp:
-        runs-on: ubuntu-latest
-        steps:
-        - name: "checkout from workflows"
-          uses: actions/checkout@v4
-        
-        - name: Set up Python
-          uses: actions/setup-python@v4
-          with:
-           python-version: "3.x"
+jobs:
+  DeploymentApp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "checkout from workflows"
+        uses: actions/checkout@v4
 
-        - name: Install pre-commit
-          run: |
-            python -m pip install --upgrade pip
-            pip install pre-commit
-  
-        - name: Run pre-commit hooks
-          run: pre-commit run --all-files
-  
-        - name: "Build the Docker image"
-          run: |
-            docker build -t  melvinsamuel070/dragone:1 .
-        
-        - name: "LOgin to Docker"
-          run: |
-            docker login -u melvinsamuel070 -p ${{ secrets.DOCKERHUB_PASSWORD }}
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
 
-        - name: "Push the Docker image to the Hub"
-          run: |
-            docker push melvinsamuel070/dragone:1 
-       
-        - name: "Go to the repo for Helm"
-          run: |
+      - name: Install pre-commit
+        run: |
+          python -m pip install --upgrade pip
+          pip install pre-commit
 
-            git config --global user.email "melvinsamuel070@gmail.com"
-            git config --global user.name "melvinsamuel070"
-            git clone https://github.com/melvinsamuel070/Dragone.git Dragone-helm
-            cd Dragone-helm/templates
-            sed -i 's/dragone:1/dragone:2/' deployement.yaml
-            # sed -i 's/rev_app:1/rev_app:2/' service.yaml
-            cat deployement.yaml
-            # cat service.yaml
-            git remote add Dragone https://${{ secrets.GH_TOKEN }}@github.com/melvinsamuel070/Dragone.git
-            git add .
-            git commit -m "Updated helm"
-            git push Dragone master
+      - name: Run pre-commit hooks
+        run: pre-commit run --all-files
 
-        - name: npm install, build, and test
-          run: |
-              npm install
-              npm run build --if-present
-              npm test
-          
-        - name: Archive production artifacts
-          uses: actions/upload-artifact@v4
-          with:
-           name: dist-without-markdown
-           path: |
-             dist
-             !dist/**/*.md
-          
-        - name: Archive code coverage results
-          uses: actions/upload-artifact@v4
-          with:
-           name: code-coverage-report
-           path: output/test/code-coverage.html
-          
+      - name: "Build the Docker image"
+        run: |
+          docker build -t  melvinsamuel070/dragone:1 .
 
+      - name: "LOgin to Docker"
+        run: |
+          docker login -u melvinsamuel070 -p ${{ secrets.DOCKERHUB_PASSWORD }}
 
-        - name: Send email
-          uses: dawidd6/action-send-mail@v4
-          with:
-              server_address: smtp.gmail.com
-              server_port: 465
-              username: ${{ secrets.EMAIL }}
-              password: ${{ secrets.PASSWORD }}  # Corrected variable reference
-              subject: "GitHub Action Notification"
-              body: "Hello! This is a test email sent from GitHub Actions. I built the artifact and downloaded it."
-              to: "theoafactor@gmail.com"
-              from: ${{ secrets.EMAIL }}
-              secure: true  # Set to false for non-TLS/SSL connections
-              tls: true
-        
-        - name: succesfull massage
-          run: |
-             echo "Deployment was succesfull" 
+      - name: "Push the Docker image to the Hub"
+        run: |
+          docker push melvinsamuel070/dragone:1
 
-            
+      - name: "Go to the repo for Helm"
+        run: |
+
+          git config --global user.email "melvinsamuel070@gmail.com"
+          git config --global user.name "melvinsamuel070"
+          git clone https://github.com/melvinsamuel070/Dragone.git Dragone-helm
+          cd Dragone-helm/templates
+          sed -i 's/dragone:1/dragone:2/' deployement.yaml
+          # sed -i 's/rev_app:1/rev_app:2/' service.yaml
+          cat deployement.yaml
+          # cat service.yaml
+          git remote add Dragone https://${{ secrets.GH_TOKEN }}@github.com/melvinsamuel070/Dragone.git
+          git add .
+          git commit -m "Updated helm"
+          git push Dragone master
+
+      - name: npm install, build, and test
+        run: |
+          npm install
+          npm run build --if-present
+          npm test
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-without-markdown
+          path: |
+            dist
+            !dist/**/*.md
+
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-coverage-report
+          path: output/test/code-coverage.html
+
+      - name: Send email
+        uses: dawidd6/action-send-mail@v4
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.EMAIL }}
+          password: ${{ secrets.PASSWORD }} # Corrected variable reference
+          subject: "GitHub Action Notification"
+          body: "Hello! This is a test email sent from GitHub Actions. I built the artifact and downloaded it."
+          to: "theoafactor@gmail.com"
+          from: ${{ secrets.EMAIL }}
+          secure: true # Set to false for non-TLS/SSL connections
+          tls: true
+
+      - name: succesfull massage
+        run: |
+          echo "Deployment was succesfull"

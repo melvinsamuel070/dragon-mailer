@@ -27,6 +27,6 @@ server.post("/send_mail", (request, response) => {
 //listening
 server.listen(serverConfig.port, serverConfig.hostname, () =>
   console.log(
-    `Dragon server is running on ${serverConfig.hostname}:${serverConfig.port}`
-  )
+    `Dragon server is running on ${serverConfig.hostname}:${serverConfig.port}`,
+  ),
 );
