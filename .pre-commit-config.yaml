@@ -160,20 +160,20 @@
 #         pass_filenames: false
 
 repos:
-  # # Run ESLint for linting
-  # - repo: https://github.com/pre-commit/mirrors-eslint
-  #   rev: v9.18.0 # Specify the version of ESLint
-  #   hooks:
-  #     - id: eslint
-  #       name: eslint
-  #       description: Lint JavaScript files using ESLint
-  #       entry: eslint
-  #       language: node
-  #       types: [javascript]
-  #       args: []
-  #       additional_dependencies: ["eslint@9.18.0"]
-  #       require_serial: false
-  #       minimum_pre_commit_version: "2.20.0"
+  # Run ESLint for linting
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: v9.18.0 # Specify the version of ESLint
+    hooks:
+      - id: eslint
+        name: eslint
+        description: Lint JavaScript files using ESLint
+        entry: eslint
+        language: node
+        types: [javascript]
+        args: []
+        additional_dependencies: ["eslint@9.18.0"]
+        require_serial: false
+        minimum_pre_commit_version: "2.20.0"
 
   # Run Prettier for formatting
   - repo: https://github.com/pre-commit/mirrors-prettier
