@@ -1,10 +1,10 @@
-require("dotenv").config();
+require('dotenv').config()
 
 //Server Configuration
 const serverConfig = {
   port: process.env.PORT,
   hostname: process.env.HOSTNAME,
-};
+}
 
 //Email Configuration
 const emailConfig = {
@@ -14,9 +14,9 @@ const emailConfig = {
   emailIsSecure: process.env.EMAIL_IS_SECURE,
   emailUsername: process.env.EMAIL_USER,
   emailPassword: process.env.EMAIL_PASSWORD,
-};
+}
 
 //Cors Configuration
-const corsConfig = {};
+const corsConfig = {}
 
-module.exports = { serverConfig, emailConfig, corsConfig };
+module.exports = { serverConfig, emailConfig, corsConfig }

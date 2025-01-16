@@ -1,5 +1,5 @@
-const nodemailer = require("nodemailer");
-const { emailConfig } = require("./config");
+const nodemailer = require('nodemailer')
+const { emailConfig } = require('./config')
 
 //transporter
 const dragonTransporter = nodemailer.createTransport({
@@ -10,6 +10,6 @@ const dragonTransporter = nodemailer.createTransport({
     user: emailConfig.emailUsername,
     pass: emailConfig.emailPassword,
   },
-});
+})
 
-module.exports = dragonTransporter;
+module.exports = dragonTransporter
