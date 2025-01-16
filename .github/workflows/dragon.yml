@@ -64,8 +64,9 @@ jobs:
            cat service.yaml
           git remote add Dragone https://${{ secrets.GH_TOKEN }}@github.com/melvinsamuel070/Dragone.git
           git add .
-          git commit -m "Updated helm"
+          git commit -m "fix: Updated helm"
           git push Dragone master
+          git log -1
 
       - name: npm install, build, and test
         run: |
