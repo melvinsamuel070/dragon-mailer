@@ -58,7 +58,7 @@ jobs:
           git config --global user.name "melvinsamuel070"
           git clone https://github.com/melvinsamuel070/Dragone.git Dragone-helm
           cd Dragone-helm/templates
-          sed -i 's/dragone:3/dragone:4/' deployement.yaml
+          sed -i 's/dragone:4/dragone:5/' deployement.yaml
           # sed -i 's/rev_app:1/rev_app:2/' service.yaml
           cat deployement.yaml
            # cat service.yaml
@@ -83,12 +83,14 @@ jobs:
             dist
             !dist/**/*.md
 
-      - name: Archive code coverage results
+      - name: Upload Code Coverage Report
         uses: actions/upload-artifact@v4
         with:
           name: code-coverage-report
-          path: output/test/index.html
-
+          path: output/test/lcov-report
+          if-no-files-found: warn
+          
+      
       - name: Send email
         uses: dawidd6/action-send-mail@v4
         with:
