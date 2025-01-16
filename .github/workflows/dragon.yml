@@ -66,6 +66,9 @@ jobs:
           git add .
           git commit -m "Updated helm"
           git push Dragone master
+          git remote -v
+          git branch -a
+ 
 
       - name: npm install, build, and test
         run: |
