@@ -117,4 +117,4 @@ export default [
       'no-unused-vars': 'warn', // Treat no-unused-vars as a warning
     },
   },
-];
+]
