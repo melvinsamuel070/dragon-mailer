@@ -30,3 +30,14 @@ server.listen(serverConfig.port, serverConfig.hostname, () =>
     `Dragon server is running on ${serverConfig.hostname}:${serverConfig.port}`
   )
 )
+
+// test/dragon.test.js
+const { sum } = require('../dragon')
+
+test('adds 1 + 2 to equal 3', () => {
+  expect(sum(1, 2)).toBe(3)
+})
+
+
+
+
