@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "scripts": {
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx --fix",
+    "lint": "eslint . --fix",
     "format": "prettier --write .",
     "prepare": "husky install",
-    "commitlint": "commitlint --edit"
+    "commitlint": "commitlint --edit",
+    "check": "npm run lint && npm test"
   },
   "dependencies": {
     "commitlint": "^19.6.1",
