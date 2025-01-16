@@ -62,12 +62,13 @@ jobs:
           # sed -i 's/rev_app:1/rev_app:2/' service.yaml
            cat deployement.yaml
            cat service.yaml
+
           git remote add Dragone https://${{ secrets.GH_TOKEN }}@github.com/melvinsamuel070/Dragone.git
           git add .
           git status
           git commit -m "fix: Updated helm"
           git push Dragone master
-          git log -1
+          git remote -v
 
       - name: npm install, build, and test
         run: |
