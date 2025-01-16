@@ -62,8 +62,8 @@ jobs:
           # sed -i 's/rev_app:1/rev_app:2/' service.yaml
           cat deployement.yaml
            # cat service.yaml
-          git remote add samuel https://${{ secrets.GH_TOKEN }}@github.com/melvinsamuel070/Dragone.git
-          git add deployement.yaml
+          git remote set-url samuel https://${{ secrets.GH_TOKEN }}@github.com/melvinsamuel070/Dragone.git
+          git add .
           git commit -m "Updated helm"
           git push samuel master
           git remote -v
