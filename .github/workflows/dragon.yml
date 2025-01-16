@@ -60,7 +60,7 @@ jobs:
           cd Dragone-helm/templates
           sed -i 's/dragone:1/dragone:2/' deployement.yaml
           # sed -i 's/rev_app:1/rev_app:2/' service.yaml
-          cat deployement.yaml
+          # cat deployement.yaml
           # cat service.yaml
           git remote add Dragone https://${{ secrets.GH_TOKEN }}@github.com/melvinsamuel070/Dragone.git
           git add .
