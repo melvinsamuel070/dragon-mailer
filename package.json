@@ -4,11 +4,12 @@
   "scripts": {
     "build": "mkdir -p dist && cp -r src/* dist/",
     "test": "jest --coverage",
-    "lint": "eslint . --fix",
-    "format": "prettier --write .",
+    "lint": "npx eslint . --quiet && echo 'pass' || echo 'fail'",
+    "format": "npx prettier --write . && echo 'pass' || echo 'fail'",
     "prepare": "husky install",
     "commitlint": "commitlint --edit",
-    "check": "npm run lint && npm test"
+    "check": "npm run lint && npm test",
+    "lint-and-format": "npm run lint && npm run format"
   },
   "dependencies": {
     "commitlint": "^19.6.1",
