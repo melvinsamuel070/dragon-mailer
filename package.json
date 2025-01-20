@@ -2,12 +2,13 @@
   "name": "dragonmailer",
   "version": "1.0.0",
   "scripts": {
-    "test": "jest --coverage",
-    "lint": "eslint . --fix",
-    "format": "prettier --write .",
-    "prepare": "husky install",
-    "commitlint": "commitlint --edit",
-    "check": "npm run lint && npm test"
+  "build": "mkdir -p dist && cp -r src/* dist/",
+  "test": "jest --coverage",
+  "lint": "eslint . --fix",
+  "format": "prettier --write .",
+  "prepare": "husky install",
+  "commitlint": "commitlint --edit",
+  "check": "npm run lint && npm test"
   },
   "dependencies": {
     "commitlint": "^19.6.1",
