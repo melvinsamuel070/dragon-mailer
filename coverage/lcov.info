@@ -2,8 +2,7 @@ TN:
 SF:commitlint.config.js
 FNF:0
 FNH:0
-DA:5,0
-LF:1
+LF:0
 LH:0
 BRF:0
 BRH:0
@@ -2274,5 +2273,14 @@ BRDA:170,10,1,0
 BRDA:180,11,0,0
 BRDA:180,11,1,0
 BRF:24
+BRH:0
+end_of_record
+TN:
+SF:src/index.js
+FNF:0
+FNH:0
+LF:0
+LH:0
+BRF:0
 BRH:0
 end_of_record
