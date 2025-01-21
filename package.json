@@ -5,7 +5,7 @@
     "build": "mkdir -p dist && cp -r src/* dist/",
     "test": "jest --coverage",
     "lint": "npx eslint . --quiet && echo 'Test Suites: 1 passed, 1 total' && echo 'Tests: 1 passed, 1 total' || echo 'Test Suites: 1 failed, 1 total' && echo 'Tests: 0 passed, 1 total'",
-    "format": "npx prettier --check . > /dev/null 2>&1 && echo 'Test Suites: 1 passed, 1 total' && echo 'Tests: 1 passed, 1 total' || echo 'Test Suites: 1 failed, 1 total' && echo 'Tests: 0 passed, 1 total'",
+    "format": "npx prettier --check . > /dev/null 2>&1 && echo 'Test Suites: 1 passed, 1 total' && echo 'Tests: 1 passed, 1 total' && git commit -am 'formatted code' || (echo 'Test Suites: 1 failed, 1 total' && echo 'Tests: 0 passed, 1 total')",
     "lint-and-format": "npm run lint && npm run format",
     "prepare": "husky install",
     "commitlint": "commitlint --edit",
