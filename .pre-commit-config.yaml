@@ -221,3 +221,45 @@ repos:
   #       language: system
   #       always_run: true
   #       pass_filenames: false
+# repos:
+#   # Black for Python code formatting
+#   - repo: https://github.com/psf/black
+#     rev: 23.7.0 # Use the latest stable version
+#     hooks:
+#       - id: black
+
+#   # flake8 for linting Python code
+#   - repo: https://github.com/pycqa/flake8
+#     rev: 6.1.0
+#     hooks:
+#       - id: flake8
+
+#   # Add your tests as a local hook
+#   - repo: local
+#     hooks:
+#       - id: run-tests
+#         name: Run Tests
+#         entry: pytest
+#         language: python
+#         types: [python]
+#         always_run: true
+
+#   # Prettier for JavaScript and other files
+#   - repo: https://github.com/pre-commit/mirrors-prettier
+#     rev: v4.0.0-alpha.8
+#     hooks:
+#       - id: prettier
+#         name: prettier
+#         entry: prettier --write
+#         language: node
+#         types: [javascript, json, css, html, markdown]
+
+#   # ESLint for JavaScript linting
+#   - repo: https://github.com/pre-commit/mirrors-eslint
+#     rev: v9.18.0
+#     hooks:
+#       - id: eslint
+#         name: eslint
+#         entry: eslint --fix
+#         language: node
+#         types: [javascript]
